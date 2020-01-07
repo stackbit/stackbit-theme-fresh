@@ -16,13 +16,13 @@ This theme in particular is written in [Unibit](https://docs.stackbit.com/unibit
 
 ### Unibit CLI
 
-Develop locally using the Unibit CLI. 
+Develop locally using the Unibit CLI.
 
 ```
 npm install -g @stackbit/unibit
 ```
 
-Start the local development server. 
+Start the local development server.
 
 ```
 unibit develop

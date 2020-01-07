@@ -1,5 +1,5 @@
 baseurl: "/"
-title: "Stackbit Fresh Theme"
+title: "Anthony Klepacki Personal Portfolio"
 page_load_js: "assets/js/main.js"
 params:
   layout_style: overflow

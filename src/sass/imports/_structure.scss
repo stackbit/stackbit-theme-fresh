@@ -1,0 +1,54 @@
+/**
+ * Structure
+ */
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1080px;
+}
+
+.inner-sm {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 760px;
+}
+
+.site {
+  overflow: hidden;
+  position: relative;
+}
+
+.site-content,
+.site-header-inside,
+.site-nav-inside {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.site-content {
+  padding-bottom: 2.5em;
+  padding-top: 2.5em;
+
+  @media only screen and (min-width: 801px) {
+    margin-left: 30vw;
+    padding-bottom: 3.33333em;
+    padding-top: 3.33333em;
+  }
+
+  @media only screen and (min-width: 1001px) {
+     margin-left: 300px;
+  }
+}
+
+.site-main {
+  margin-bottom: 3.33333em;
+}
+
+.style-simple {
+  .post-feed,
+  .post-image {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 760px;
+  }
+}

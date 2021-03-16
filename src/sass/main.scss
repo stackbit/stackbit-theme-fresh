@@ -1,0 +1,32 @@
+
+// Font.
+$font: (
+  primary: ("Roboto",Helvetica,sans-serif),
+  monospace: (Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace)
+);
+
+// Palette.
+$palette: (
+  primary:       #555e69,
+  secondary:     darken(#555e69, 15%),
+  meta:          lighten(#555e69, 25%),
+  border:        lighten(#555e69, 55%),
+  bg:            lighten(#555e69, 60%),
+  accent:        #1de2bc,
+  accent-blue:   #10bcf9,
+  accent-violet: #9371e6,
+  accent-orange: #fc6e51
+);
+
+@import "imports/functions";
+@import "imports/reset";
+@import "imports/general";
+@import "imports/icons";
+@import "imports/animations";
+@import "imports/structure";
+@import "imports/header";
+@import "imports/posts-pages";
+@import "imports/sections";
+@import "imports/footer";
+@import "imports/palettes";
+@import "imports/banner";

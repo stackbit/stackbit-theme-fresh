@@ -1,0 +1,251 @@
+/**
+ * Palettes
+ */
+.palette-blue {
+  a {
+    border-color: _palette(accent-blue);
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+
+  button,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  .button {
+    background: _palette(accent-blue);
+    border-color: _palette(accent-blue);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      border-color: _palette(accent-blue);
+      box-shadow: 0 0 1px 0.5em rgba(_palette(accent-blue),.2);
+    }
+  }
+
+  .underline {
+    &:after {
+      border-color: _palette(accent-blue);
+    }
+  }
+
+  .profile {
+    .avatar {
+      border-color: _palette(accent-blue);
+      box-shadow: 0 0 1px 7px rgba(_palette(accent-blue),.2);
+
+      @media only screen and (min-width: 801px) {
+        box-shadow: 0 0 1px 11px rgba(_palette(accent-blue),.2);
+      }
+    }
+  }
+
+  .social-links {
+    a {
+      &:not(.button) {
+        &:hover {
+          color: _palette(accent-blue);
+        }
+      }
+
+      &.button-icon {
+        &:hover,
+        &:focus,
+        &:active {
+          background: _palette(accent-blue);
+          border-color: _palette(accent-blue);
+          box-shadow: 0 0 1px 5px rgba(_palette(accent-blue),.2);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .menu-item.current-menu-item,
+  .menu-item :not(.button):hover,
+  .post-title a:hover {
+    color: _palette(accent-blue);
+  }
+
+  .site-header.dark {
+    .social-links .button-icon:hover {
+      border-color: _palette(accent-blue);
+    }
+
+    .menu-item .button:hover,
+    .menu-item .button:focus,
+    .menu-item .button:active {
+      color: _palette(accent-blue);
+    }
+  }
+}
+
+.palette-violet {
+  a {
+    border-color: _palette(accent-violet);
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+
+  button,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  .button {
+    background: _palette(accent-violet);
+    border-color: _palette(accent-violet);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      border-color: _palette(accent-violet);
+      box-shadow: 0 0 1px 0.5em rgba(_palette(accent-violet),.2);
+    }
+  }
+
+  .underline {
+    &:after {
+      border-color: _palette(accent-violet);
+    }
+  }
+
+  .profile {
+    .avatar {
+      border-color: _palette(accent-violet);
+      box-shadow: 0 0 1px 7px rgba(_palette(accent-violet),.2);
+
+      @media only screen and (min-width: 801px) {
+        box-shadow: 0 0 1px 11px rgba(_palette(accent-violet),.2);
+      }
+    }
+  }
+
+  .social-links {
+    a {
+      &:not(.button) {
+        &:hover {
+          color: _palette(accent-violet);
+        }
+      }
+
+      &.button-icon {
+        &:hover,
+        &:focus,
+        &:active {
+          background: _palette(accent-violet);
+          border-color: _palette(accent-violet);
+          box-shadow: 0 0 1px 5px rgba(_palette(accent-violet),.2);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .menu-item.current-menu-item,
+  .menu-item :not(.button):hover,
+  .post-title a:hover {
+    color: _palette(accent-violet);
+  }
+
+  .site-header.dark {
+    .social-links .button-icon:hover {
+      border-color: _palette(accent-violet);
+    }
+
+    .menu-item .button:hover,
+    .menu-item .button:focus,
+    .menu-item .button:active {
+      color: _palette(accent-violet);
+    }
+  }
+}
+
+.palette-orange {
+  a {
+    border-color: _palette(accent-orange);
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+
+  button,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  .button {
+    background: _palette(accent-orange);
+    border-color: _palette(accent-orange);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      border-color: _palette(accent-orange);
+      box-shadow: 0 0 1px 0.5em rgba(_palette(accent-orange),.2);
+    }
+  }
+
+  .underline {
+    &:after {
+      border-color: _palette(accent-orange);
+    }
+  }
+
+  .profile {
+    .avatar {
+      border-color: _palette(accent-orange);
+      box-shadow: 0 0 1px 7px rgba(_palette(accent-orange),.2);
+
+      @media only screen and (min-width: 801px) {
+        box-shadow: 0 0 1px 11px rgba(_palette(accent-orange),.2);
+      }
+    }
+  }
+
+  .social-links {
+    a {
+      &:not(.button) {
+        &:hover {
+          color: _palette(accent-orange);
+        }
+      }
+
+      &.button-icon {
+        &:hover,
+        &:focus,
+        &:active {
+          background: _palette(accent-orange);
+          border-color: _palette(accent-orange);
+          box-shadow: 0 0 1px 5px rgba(_palette(accent-orange),.2);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .menu-item.current-menu-item,
+  .menu-item :not(.button):hover,
+  .post-title a:hover {
+    color: _palette(accent-orange);
+  }
+
+  .site-header.dark {
+    .social-links .button-icon:hover {
+      border-color: _palette(accent-orange);
+    }
+
+    .menu-item .button:hover,
+    .menu-item .button:focus,
+    .menu-item .button:active {
+      color: _palette(accent-orange);
+    }
+  }
+}

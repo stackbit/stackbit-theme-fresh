@@ -1,0 +1,128 @@
+/**
+ * Custom Icons
+ */
+.icon {
+  color: inherit;
+  fill: currentColor;
+  flex-shrink: 0;
+  height: 1em;
+  line-height: 1;
+  width: 1em;
+}
+
+.icon-menu {
+  background: currentColor;
+  color: inherit;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: width .15s ease;
+  transition: width .15s ease;
+  width: 20px;
+
+  &:before,
+  &:after {
+    background: currentColor;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    -webkit-transition: -webkit-transform .15s ease;
+    -webkit-transition: transform .15s ease;
+    transition: transform .15s ease;
+    width: 20px;
+  }
+
+  &:before {
+    top: 5px;
+  }
+
+  &:after {
+    top: -5px;
+  }
+}
+
+.menu--opened {
+  .icon-menu {
+    width: 35px;
+
+    &:before {
+      -webkit-transform: translate3d(5px, 0, 0) rotate(-45deg) scale(0.78, 1);
+      transform: translate3d(5px, 0, 0) rotate(-45deg) scale(0.78, 1);
+    }
+
+    &:after {
+      -webkit-transform: translate3d(5px, 0, 0) rotate(45deg) scale(0.78, 1);
+      transform: translate3d(5px, 0, 0) rotate(45deg) scale(0.78, 1);
+    }
+  }
+}
+
+.icon-arrow-left,
+.icon-arrow-right {
+  background: currentColor;
+  color: inherit;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: 16px;
+}
+
+.icon-arrow-up {
+  background: currentColor;
+  color: inherit;
+  height: 16px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: 2px;
+}
+
+.icon-arrow-left:before,
+.icon-arrow-right:before,
+.icon-arrow-up:before {
+  border-color: currentColor;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+}
+
+.icon-arrow-left:before {
+  border-width: 2px 0 0 2px;
+  left: -1px;
+  top: 1px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+
+.icon-arrow-right:before {
+  border-width: 2px 2px 0 0;
+  right: -1px;
+  top: 1px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+
+.icon-arrow-up:before {
+  border-width: 2px 2px 0 0;
+  right: 1px;
+  top: -1px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}

@@ -1,0 +1,66 @@
+/**
+ * Site Footer
+ */
+.site-footer {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  border-top: 1px solid _palette(border);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2.5em;
+
+  .site-info {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-transform: uppercase;
+
+    .copyright,
+    > a {
+      font-size: 11px;
+      margin-bottom: 0.5em;
+      margin-right: 8px;
+    }
+
+    .button {
+      padding: 0.58182em 15px;
+    }
+  }
+
+  .to-top {
+    border: 0;
+    color: _palette(primary);
+    display: none;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    height: 30px;
+    margin-left: auto;
+    position: relative;
+    width: 30px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .site-info {
+      margin-right: 15px;
+    }
+
+    .to-top {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,613 @@
+stackbitVersion: ~0.3.0
+ssgName: nextjs
+buildCommand: npm run build
+publishDir: out
+assets:
+  referenceType: static
+  staticDir: public
+  uploadDir: images
+  publicPath: /
+dataDir: content/data
+pagesDir: content/pages
+pageLayoutKey: layout
+pageData:
+  - pagePath: /
+    initialExpandedPaths:
+      - '[0]'
+      - '[0].fields.sections'
+      - '[0].fields.sections.items[0]'
+      - '[0].fields.sections.items[0].fields.title'
+      - '[0].fields.sections.items[0].fields.content'
+      - '[1]'
+      - '[1].fields.palette'
+sourceMapping:
+  - source:
+      fieldPath: author.name
+    target:
+      file: config.yml
+      fieldPath: params.header.title
+  - source:
+      fieldPath: author.tagline
+    target:
+      file: config.yml
+      fieldPath: params.header.tagline
+  - source:
+      fieldPath: author.avatar
+    target:
+      file: config.yml
+      fieldPath: params.header.profile_img
+  - source:
+      fieldPath: 'social.links[0].url'
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[0].url'
+  - source:
+      fieldPath: social.twitter.url
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[0].url'
+  - source:
+      fieldPath: social.instagram.url
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[1].url'
+  - source:
+      fieldPath: social.github.url
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[2].url'
+  - source:
+      fieldPath: social.linkedin.url
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[3].url'
+  - source:
+      fieldPath: social.devto.url
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[4].url'
+  - action: delete
+    condition: context.social && !context.social.devto
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[4]'
+  - action: delete
+    condition: context.social && !context.social.linkedin
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[3]'
+  - action: delete
+    condition: context.social && !context.social.github
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[2]'
+  - action: delete
+    condition: context.social && !context.social.instagram
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[1]'
+  - action: delete
+    condition: context.social && !context.social.twitter
+    target:
+      file: config.yml
+      fieldPath: 'params.header.social_links[0]'
+  - source:
+      fieldPath: source.title
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].label'
+  - source:
+      fieldPath: source.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].url'
+  - source:
+      value: true
+    condition: context.source.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].new_window'
+  - source:
+      value: link
+    condition: context.source.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].style'
+logicFields:
+  - section_posts.posts_number
+models:
+  config:
+    type: data
+    label: Site Configuration
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: Site title
+        required: true
+      - type: string
+        name: path_prefix
+        label: Base URL
+        description: >-
+          The base URL of this site. Useful for sites hosted under specific
+          path, e.g.: https://www.example.com/my-site/
+        required: true
+        hidden: true
+      - type: string
+        name: domain
+        label: Domain
+        description: >-
+          The domain of your site, including the protocol, e.g.
+          https://www.example.com/
+      - type: image
+        name: favicon
+        label: Favicon
+        description: A square icon that represents your website.
+      - type: enum
+        name: layout_style
+        label: Layout Style
+        description: The style of the theme layout.
+        options:
+          - simple
+          - overflow
+        default: simple
+        required: true
+      - type: enum
+        name: palette
+        label: Color Palette
+        description: The color palette used for the site.
+        options:
+          - blue
+          - green
+          - orange
+          - violet
+        default: green
+        required: true
+      - type: model
+        name: header
+        label: Header Configuration
+        models:
+          - header
+      - type: model
+        name: footer
+        label: Footer Configuration
+        models:
+          - footer
+    file: config.json
+  header:
+    type: object
+    label: Header Configuration
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Header Title
+        description: >-
+          The title displayed on the left side. If value is not set, the author
+          name will be used.
+      - type: string
+        name: tagline
+        label: Header Tagline
+        description: The tagline displayed on the left side.
+      - type: image
+        name: profile_img
+        label: Profile Image
+        description: The author profile image displayed on the left side.
+      - type: string
+        name: profile_img_alt
+        label: Profile Image Alt Text
+        description: The alt text of the author profile image.
+      - type: enum
+        name: background
+        label: Background
+        description: The background of the left side.
+        options:
+          - dark
+          - light
+        default: dark
+      - type: boolean
+        name: has_nav
+        label: Enable Navigation Menu
+        description: Display the navigation menu bar on the left side.
+        default: true
+      - type: list
+        name: nav_links
+        label: Navigation Links
+        description: List of navigation links.
+        items:
+          type: model
+          models:
+            - action
+      - type: boolean
+        name: has_social
+        label: Enable Social Links
+        description: Display social links on the left side.
+        default: true
+      - type: list
+        name: social_links
+        label: Social Links
+        description: List of social links on the left side.
+        items:
+          type: model
+          models:
+            - action
+  footer:
+    type: object
+    label: Footer Configuration
+    labelField: content
+    fields:
+      - type: string
+        name: content
+        label: Footer Content
+        description: The copyright text displayed in the footer.
+      - type: list
+        name: links
+        label: Links
+        description: List of links in the footer.
+        items:
+          type: model
+          models:
+            - action
+  advanced:
+    type: page
+    label: Advanced Page
+    layout: advanced
+    hideContent: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page.
+        required: true
+      - type: boolean
+        name: hide_title
+        label: Hide page title
+        default: true
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the page displayed in meta data.
+      - type: list
+        name: sections
+        label: Sections
+        description: Page sections
+        items:
+          type: model
+          models:
+            - section_content
+            - section_form
+            - section_hero
+            - section_posts
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  blog:
+    type: page
+    urlPath: /blog
+    label: Blog
+    layout: blog
+    file: blog/index.md
+    hideContent: true
+    singleInstance: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page.
+        required: true
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  page:
+    type: page
+    label: Page
+    layout: page
+    exclude: posts/**
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown just below the page title.
+      - type: image
+        name: img_path
+        label: Image
+        description: The image shown below the page title and subtitle.
+      - type: string
+        name: img_alt
+        label: Image Alt Text
+        description: The alt text of the image.
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  post:
+    type: page
+    urlPath: '/posts/{slug}'
+    label: Post
+    layout: post
+    folder: posts
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the post.
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown just below the post title.
+      - type: date
+        name: date
+        label: Date
+        required: true
+      - type: image
+        name: thumb_img_path
+        label: Image (blog feed)
+        description: The image shown in the blog feed.
+      - type: string
+        name: thumb_img_alt
+        label: Image alt text (blog feed)
+        description: The alt text of the blog feed image.
+      - type: image
+        name: content_img_path
+        label: Image (single post)
+        description: The image shown in the single post.
+      - type: string
+        name: content_img_alt
+        label: Image alt text (single post)
+        description: The alt text of the single post image.
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the post displayed in the blog feed.
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section.
+      - type: string
+        name: section_id
+        label: Element ID
+        description: >-
+          A unique identifier that can be used when linking to this section.
+          Must not contain whitespace.
+  section_hero:
+    type: object
+    label: Hero Section
+    extends:
+      - section
+    fields:
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section.
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: model
+          models:
+            - action
+  section_content:
+    type: object
+    label: Content Section
+    extends:
+      - section
+    fields:
+      - type: image
+        name: image
+        label: Image
+        description: The image of the section.
+      - type: string
+        name: image_alt
+        label: Image alt text
+        description: The alt text of the section image.
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section.
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: model
+          models:
+            - action
+  section_posts:
+    type: object
+    label: Posts Section
+    extends:
+      - section
+    fields:
+      - type: number
+        name: posts_number
+        label: Number of posts to display
+        required: true
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: model
+          models:
+            - action
+  section_form:
+    type: object
+    label: Form Section
+    extends:
+      - section
+    fields:
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section.
+      - type: string
+        name: form_id
+        label: Form ID
+        description: A unique identifier of the form. Must not contain whitespace.
+        required: true
+      - type: string
+        name: form_action
+        label: Form Action
+        description: >-
+          The path of your custom "success" page, if you want to replace the
+          default success message.
+      - type: list
+        name: form_fields
+        label: Form Fields
+        items:
+          type: model
+          models:
+            - form_field
+      - type: string
+        name: submit_label
+        label: Submit Button Label
+        required: true
+  action:
+    type: object
+    label: Action
+    labelField: label
+    fields:
+      - type: string
+        name: label
+        label: Label
+        required: true
+      - type: string
+        name: url
+        label: URL
+        required: true
+        default: '#'
+      - type: enum
+        name: style
+        label: Style
+        options:
+          - link
+          - button
+          - icon
+        default: link
+        required: true
+      - type: enum
+        name: icon_class
+        label: Icon
+        options:
+          - dev
+          - facebook
+          - github
+          - instagram
+          - linkedin
+          - pinterest
+          - reddit
+          - twitter
+          - vimeo
+          - youtube
+        default: dev
+      - type: boolean
+        name: new_window
+        label: Open in new tab/window
+        default: false
+      - type: boolean
+        name: no_follow
+        label: No follow
+        default: false
+        description: Add rel="nofollow" attribute to the link
+  form_field:
+    type: object
+    label: Form Field
+    labelField: name
+    fields:
+      - type: enum
+        name: input_type
+        label: Type
+        options:
+          - text
+          - email
+          - tel
+          - number
+          - checkbox
+          - textarea
+          - select
+        description: Type of the form field.
+        required: true
+      - type: string
+        name: name
+        label: Name
+        description: 'The name of the field, submitted with the form.'
+        required: true
+      - type: string
+        name: label
+        label: Label
+        description: 'The caption of the field, shown above the field input.'
+      - type: string
+        name: default_value
+        description: The default value for textual field types.
+      - type: list
+        name: options
+        description: 'The list of options, used only when the field type is "select".'
+      - type: boolean
+        name: is_required
+        label: Is the field required?
+        default: false
+  stackbit_page_meta:
+    type: object
+    label: Page meta data
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The page title that goes into the <title> tag
+        default: ''
+      - type: string
+        name: description
+        label: Description
+        description: The page description that goes into the <meta name="description"> tag
+        default: ''
+      - type: list
+        name: robots
+        label: Robots
+        description: The items that go into the <meta name="robots"> tag
+        items:
+          type: enum
+          options:
+            - all
+            - index
+            - follow
+            - noindex
+            - nofollow
+            - noimageindex
+            - notranslate
+            - none
+      - type: list
+        name: extra
+        label: Extra
+        description: >-
+          Additional definition for specific meta tags such as open-graph,
+          twitter, etc.
+        items:
+          type: object
+          labelField: name
+          fields:
+            - type: string
+              name: name
+              default: ''
+            - type: string
+              name: value
+              default: ''
+            - type: string
+              name: keyName
+              default: name
+            - type: boolean
+              name: relativeUrl
